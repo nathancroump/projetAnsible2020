@@ -1,0 +1,8 @@
+#hyperviseur:
+[hosts]
+pve  ansible_host=192.168.58.135
+pve2 ansible_host=192.168.58.137
+pve3 ansible_host=192.168.58.138
+
+
+
