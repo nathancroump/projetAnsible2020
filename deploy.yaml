@@ -1,0 +1,30 @@
+# Create new VM with minimal options
+- hosts: all
+  tasks: 
+        - name: "Deploy VM"
+          proxmox_kvm:
+              api_user     : root@pam
+              api_password : itescia
+              api_host     : 192.168.58.135
+              name         : testVM
+              node         : pve
+              ide          : '{"ide0":"data:iso/ubuntu-18.04.1-live-server-amd64.iso,media=cdrom"}'
+              autostart    : yes
+              cores        : 2
+              memory       : 512
+              net          : '{"net0":"virtio,bridge=vmbr0,rate=200"}'
+              virtio       : '{"scsi0":"replica:20,format=raw"}'
+              ostype       : l26
+
+
+        - name: "PowerON"
+          proxmox_kvm:
+              api_user    : root@pam
+              api_password: itescia
+              api_host    : 192.168.58.135
+              name        : testVM
+              node        : pve
+              state       : started
+
+
+
