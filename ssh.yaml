@@ -1,0 +1,15 @@
+-
+ hosts: all
+ tasks:
+  - name: Add the user 'itescia' with a specific uid and a primary group of 'sudo'
+    user:
+     name: itescia
+     comment: itescia
+     uid: 1045
+     group: sudo
+  - name: "SSHKEYGEN"
+    authorized_key:
+     user: itescia
+     state: present
+     key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub')  }}"
+
