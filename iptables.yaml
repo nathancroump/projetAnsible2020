@@ -1,0 +1,33 @@
+---
+
+-
+  hosts: all
+  tasks:
+   - name: AllowSSH
+     iptables:
+          chain: INPUT
+          comment: "Accept new SSH connections."
+          ctstate: NEW
+          destination_port: 22
+          jump: ACCEPT
+          protocol: tcp
+
+   - name: AllowHTTPS
+     iptables:
+          chain: INPUT
+          comment: "Accept new HTTPS connections."
+          ctstate: NEW
+          destination_port: 8006
+          jump: ACCEPT
+          protocol: tcp
+
+
+
+
+
+
+
+
+
+
+         
